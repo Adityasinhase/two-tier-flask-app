@@ -15,15 +15,19 @@
             font-family: Inter, sans-serif
         }
 
-        body {
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 30px;
-            background: radial-gradient(circle at top left, #8b5cf633, transparent 30%), radial-gradient(circle at bottom right, #06b6d433, transparent 30%), linear-gradient(135deg, #08111f, #111827);
-            color: #fff
-        }
+:root {
+    --app-background: linear-gradient(135deg, #08111f, #111827);
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+    background: var(--app-background);
+    color: #fff;
+}
 
         .container {
             max-width: 720px;
