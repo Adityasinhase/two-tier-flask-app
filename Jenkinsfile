@@ -1,13 +1,13 @@
-@Library("Shared") _
+
 pipeline{
     
-    agent { label "dev"};
+    agent any;
     
     stages{
         stage("Code Clone"){
             steps{
                script{
-                   clone("https://github.com/LondheShubham153/two-tier-flask-app.git", "master")
+                   clone("https://github.com/adityasinhase/two-tier-flask-app.git", "master")
                }
             }
         }
