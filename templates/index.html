@@ -6,127 +6,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Flask App new🚀</title>
     <style>
-        /* Import Google Font */
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
 
-        /* Reset Default Styles */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
-        }
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap');
+*{margin:0;padding:0;box-sizing:border-box;font-family:Inter,sans-serif}
+body{min-height:100vh;display:flex;justify-content:center;align-items:center;padding:30px;background:radial-gradient(circle at top left,#8b5cf633,transparent 30%),radial-gradient(circle at bottom right,#06b6d433,transparent 30%),linear-gradient(135deg,#08111f,#111827);color:#fff}
+.container{max-width:720px;width:100%;padding:36px;background:rgba(255,255,255,.08);backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,.14);border-radius:28px;box-shadow:0 20px 60px rgba(0,0,0,.35)}
+h1{text-align:center;margin-bottom:24px;font-size:2.3rem;background:linear-gradient(90deg,#67e8f9,#8b5cf6,#fff);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.messages{display:flex;flex-direction:column;gap:12px;max-height:320px;overflow:auto;padding:18px;border-radius:18px;background:rgba(255,255,255,.05);margin-bottom:20px}
+.messages p{padding:14px 18px;border-radius:16px;background:linear-gradient(135deg,rgba(103,232,249,.15),rgba(139,92,246,.15))}
+#messageForm{display:flex;gap:12px}
+input[type=text]{flex:1;padding:15px;border-radius:14px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.15);color:#fff}
+input[type=text]:focus{outline:none;border-color:#67e8f9;box-shadow:0 0 0 4px rgba(103,232,249,.15)}
+input[type=submit]{padding:15px 24px;border:none;border-radius:14px;background:linear-gradient(135deg,#06b6d4,#8b5cf6);color:#fff;font-weight:700;cursor:pointer}
+@media(max-width:640px){#messageForm{flex-direction:column}}
 
-        /* Background with subtle gradient */
-        body {
-            background: linear-gradient(to bottom, #0f0f0f, #1c1c1c);
-            color: #fff;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            padding: 20px;
-        }
-
-        /* Glassmorphic Container */
-        .container {
-            max-width: 600px;
-            width: 100%;
-            padding: 30px;
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border-radius: 15px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            text-align: center;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .container:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 12px 24px rgba(255, 255, 255, 0.1);
-        }
-
-        /* Elegant Heading */
-        h1 {
-            font-size: 2rem;
-            font-weight: 600;
-            background: linear-gradient(135deg, #ff9800, #e65100);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 20px;
-        }
-
-        /* Messages Box */
-        .messages {
-            margin-bottom: 20px;
-            padding: 15px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 10px;
-            max-height: 200px;
-            overflow-y: auto;
-        }
-
-        .messages p {
-            padding: 10px;
-            background: rgba(255, 255, 255, 0.2);
-            border-radius: 8px;
-            margin-bottom: 5px;
-            font-size: 0.95rem;
-        }
-
-        /* Animated Input Fields */
-        input[type="text"] {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            background: rgba(255, 255, 255, 0.05);
-            color: #fff;
-            border-radius: 8px;
-            font-size: 16px;
-            transition: all 0.3s ease;
-            text-align: center;
-        }
-
-        input[type="text"]:focus {
-            border-color: #ff9800;
-            box-shadow: 0 0 12px rgba(255, 152, 0, 0.5);
-            outline: none;
-        }
-
-        /* Glowing Submit Button */
-        input[type="submit"] {
-            width: 100%;
-            padding: 12px;
-            background: linear-gradient(135deg, #ff9800, #e65100);
-            color: #fff;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            font-size: 16px;
-            transition: all 0.3s ease;
-        }
-
-        input[type="submit"]:hover {
-            box-shadow: 0 0 20px rgba(255, 152, 0, 0.6);
-            transform: translateY(-2px);
-        }
-
-        /* Mobile Responsive */
-        @media (max-width: 600px) {
-            .container {
-                padding: 20px;
-            }
-
-            h1 {
-                font-size: 1.6rem;
-            }
-
-            input[type="text"], input[type="submit"] {
-                font-size: 14px;
-            }
-        }
-    </style>
+</style>
 </head>
 
 <body>
