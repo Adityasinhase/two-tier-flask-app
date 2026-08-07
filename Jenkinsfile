@@ -1,48 +1,43 @@
-
 pipeline{
-    
-    agent any;
-    
-    stages{
-        stage("Code Clone"){
-            steps{
-               script{
-                   clone("https://github.com/adityasinhase/two-tier-flask-app.git", "master")
-               }
-            }
-        }
-        stage("Trivy File System Scan"){
-            steps{
-                script{
-                    trivy_fs()
-                }
-            }
-        }
-        stage("Build"){
-            steps{
-                sh "docker build -t two-tier-flask-app ."
-            }
-            
-        }
-        stage("Test"){
-            steps{
-                echo "Developer / Tester tests likh ke dega..."
-            }
-            
-        }
-        stage("Push to Docker Hub"){
-            steps{
-                script{
-                    docker_push("dockerHubCreds","two-tier-flask-app")
-                }  
-            }
-        }
-        stage("Deploy"){
-            steps{
-                sh "docker compose up -d --build flask-app"
-            }
-        }
+agent any;
+stages{
+stage("Code clone"){
+steps{
+git url: '
+Adityasinhase/two-tier-flask-app.gitt',
+branch: "master"
+sh '''
+git log --oneline -1
+git remote -v
+cat templates/index.html
+'''
+}
+}
+stage("Build"){
+steps {
+sh "docker build -t flask_app_image:latest ."
+}
+}
+stage("Push to Docker hub"){
+steps{
+withCredentials([usernamePassword
+(credentialsId:"dockerhubcreds",
+passwordVariable: "dockerHubPassword",
+usernameVariable: "dockerHubUsername"
+)]){
+sh "docker login -u ${env.dockerHubUsername} -p ${env.dockerHubPassword}"
+sh "docker image tag flask_app_image ${env.dockerHubUsername}/flask_app_image:latest"
+sh "docker push ${env.dockerHubUsername}/flask_app_image:latest"
+}
+}
+}
+stage("Execution"){
+steps{
+sh "docker compose up -d"
+}
+
     }
+}
 
 
 }
