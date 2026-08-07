@@ -23,7 +23,7 @@ services:
       start_period: 60s
 
   flask-app:
-    image: adicloudcraft/two-tier-flask-app:latest
+    image: adicloudcraft/flask_app_image:latest
     container_name: flask-app
     ports:
       - "5000:5000"
