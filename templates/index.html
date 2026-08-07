@@ -6,21 +6,99 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Flask App new🚀</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap');
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap');
-*{margin:0;padding:0;box-sizing:border-box;font-family:Inter,sans-serif}
-body{min-height:100vh;display:flex;justify-content:center;align-items:center;padding:30px;background:radial-gradient(circle at top left,#8b5cf633,transparent 30%),radial-gradient(circle at bottom right,#06b6d433,transparent 30%),linear-gradient(135deg,#08111f,#111827);color:#fff}
-.container{max-width:720px;width:100%;padding:36px;background:rgba(255,255,255,.08);backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,.14);border-radius:28px;box-shadow:0 20px 60px rgba(0,0,0,.35)}
-h1{text-align:center;margin-bottom:24px;font-size:2.3rem;background:linear-gradient(90deg,#67e8f9,#8b5cf6,#fff);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-.messages{display:flex;flex-direction:column;gap:12px;max-height:320px;overflow:auto;padding:18px;border-radius:18px;background:rgba(255,255,255,.05);margin-bottom:20px}
-.messages p{padding:14px 18px;border-radius:16px;background:linear-gradient(135deg,rgba(103,232,249,.15),rgba(139,92,246,.15))}
-#messageForm{display:flex;gap:12px}
-input[type="text"]{flex:1;padding:15px;border-radius:14px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.15);color:#fff}
-input[type="text"]:focus{outline:none;border-color:#67e8f9;box-shadow:0 0 0 4px rgba(103,232,249,.15)}
-input[type=submit]{padding:15px 24px;border:none;border-radius:14px;background:linear-gradient(135deg,#06b6d4,#8b5cf6);color:#fff;font-weight:700;cursor:pointer}
-@media(max-width:640px){#messageForm{flex-direction:column}}
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Inter, sans-serif
+        }
 
-</style>
+        body {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 30px;
+            background: radial-gradient(circle at top left, #8b5cf633, transparent 30%), radial-gradient(circle at bottom right, #06b6d433, transparent 30%), linear-gradient(135deg, #08111f, #111827);
+            color: #fff
+        }
+
+        .container {
+            max-width: 720px;
+            width: 100%;
+            padding: 36px;
+            background: rgba(255, 255, 255, .08);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, .14);
+            border-radius: 28px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, .35)
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 24px;
+            font-size: 2.3rem;
+            background: linear-gradient(90deg, #67e8f9, #8b5cf6, #fff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent
+        }
+
+        .messages {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            max-height: 320px;
+            overflow: auto;
+            padding: 18px;
+            border-radius: 18px;
+            background: rgba(255, 255, 255, .05);
+            margin-bottom: 20px
+        }
+
+        .messages p {
+            padding: 14px 18px;
+            border-radius: 16px;
+            background: linear-gradient(135deg, rgba(103, 232, 249, .15), rgba(139, 92, 246, .15))
+        }
+
+        #messageForm {
+            display: flex;
+            gap: 12px
+        }
+
+        input[type="text"] {
+            flex: 1;
+            padding: 15px;
+            border-radius: 14px;
+            background: rgba(255, 255, 255, .07);
+            border: 1px solid rgba(255, 255, 255, .15);
+            color: #fff
+        }
+
+        input[type="text"]:focus {
+            outline: none;
+            border-color: #67e8f9;
+            box-shadow: 0 0 0 4px rgba(103, 232, 249, .15)
+        }
+
+        input[type="submit"] {
+            padding: 15px 24px;
+            border: none;
+            border-radius: 14px;
+            background: linear-gradient(135deg, #06b6d4, #8b5cf6);
+            color: #fff;
+            font-weight: 700;
+            cursor: pointer
+        }
+
+        @media(max-width:640px) {
+            #messageForm {
+                flex-direction: column
+            }
+        }
+    </style>
 </head>
 
 <body>
@@ -29,7 +107,7 @@ input[type=submit]{padding:15px 24px;border:none;border-radius:14px;background:l
 
         <div class="messages">
             {% for message in messages %}
-                <p>{{ message[0] }}</p>
+            <p>{{ message[0] }}</p>
             {% endfor %}
         </div>
 
@@ -42,8 +120,8 @@ input[type=submit]{padding:15px 24px;border:none;border-radius:14px;background:l
     <!-- jQuery for Smooth AJAX Requests -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
-        $(document).ready(function() {
-            $("#messageForm").on("submit", function(event) {
+        $(document).ready(function () {
+            $("#messageForm").on("submit", function (event) {
                 event.preventDefault(); // Prevent page reload
 
                 let messageInput = $("input[name='new_message']");
@@ -58,7 +136,7 @@ input[type=submit]{padding:15px 24px;border:none;border-radius:14px;background:l
                     url: "/submit",
                     type: "POST",
                     data: { new_message: message },
-                    success: function(response) {
+                    success: function (response) {
                         if (response && response.message) {
                             $(".messages").append("<p>" + response.message + "</p>");
                             messageInput.val("");
@@ -66,7 +144,7 @@ input[type=submit]{padding:15px 24px;border:none;border-radius:14px;background:l
                             console.error("Unexpected response format:", response);
                         }
                     },
-                    error: function(xhr, status, error) {
+                    error: function (xhr, status, error) {
                         console.error("AJAX Error:", status, error);
                     }
                 });
