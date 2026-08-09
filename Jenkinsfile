@@ -7,7 +7,11 @@ pipeline{
                 branch: "master"
             }
         }
-
+        stage("Patch"){
+            steps{
+                sh "chown -r 777 /var/lib/jenkins/workspace/flask-app/mysql-data"
+            }
+        }
         stage("Build"){
         steps {
             sh "docker build -t flask_app_image:latest ."
