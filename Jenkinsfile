@@ -9,7 +9,7 @@ pipeline{
         }
         stage("Patch"){
             steps{
-                sh "chown -r 777 /var/lib/jenkins/workspace/flask-app/mysql-data"
+                sh "chown -R 777 /var/lib/jenkins/workspace/flask-app/mysql-data"
             }
         }
         stage("Build"){
