@@ -20,7 +20,7 @@ pipeline{
         stage("Push to Docker hub"){
             steps{
                 script{
-               image_push("dockerhubcreds","flask_app_image","latest""flask_app_image","latest")
+               image_push("dockerhubcreds","flask_app_image","latest")
                 }
                 }
         }
