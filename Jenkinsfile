@@ -37,18 +37,11 @@ pipeline{
         success{
             script{
                 result("adicloudcraft@gmail.com","Build Successful","Good News: Your build was successful!","ms2419668@gmail.com")
-                // emailext from:'adicloudcraft@gmail.com',
-                //     subject:"Build Successful",
-                //     body:"Good News: Your build was successful!",
-                //     to:'ms2419668@gmail.com'
                     }
                 }
         failure{
             script{
-            emailext from:'adicloudcraft@gmail.com',
-                subject:"Build failed",
-                body:"Bad News:  Production failed",
-                to:'ms2419668@gmail.com'
+                result("adicloudcraft@gmail.com","Build Faliure","Bad News: Your build was failed Need your immidiate attention","ms2419668@gmail.com")
                 }
             }
     }
