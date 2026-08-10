@@ -27,7 +27,9 @@ pipeline{
 
         stage("Execution"){
             steps{
-                sh "docker compose up -d"
+                script{
+                    execute()
+                }
             }
         }
     }
